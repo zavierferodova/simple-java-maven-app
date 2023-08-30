@@ -23,7 +23,9 @@ pipeline {
         }
         stage('Deliver') {
             steps {
+                input message: 'Deploy to production? (Press "Proceed" to continue)'
                 sh './jenkins/scripts/deliver.sh'
+                sleep time: 1, unit: 'MINUTES'
             }
         }
     }
