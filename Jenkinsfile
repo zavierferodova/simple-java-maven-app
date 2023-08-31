@@ -21,9 +21,13 @@ pipeline {
                 }
             }
         }
-        stage('Deliver') {
+        stage('Approval') {
             steps {
                 input message: 'Deploy to production? (Press "Proceed" to continue)'
+            }
+        }
+        stage('Deliver') {
+            steps {
                 sh './jenkins/scripts/deliver.sh'
                 sleep time: 1, unit: 'MINUTES'
             }
